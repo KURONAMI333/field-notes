@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.kuronami.fieldnotes.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "PlayerAdvancementsMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

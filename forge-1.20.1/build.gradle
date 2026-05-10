@@ -47,6 +47,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenCentral()
     maven {
         name = 'ParchmentMC'
         url = 'https://maven.parchmentmc.org'

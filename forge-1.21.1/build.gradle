@@ -47,6 +47,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenCentral()
     // ParchmentMC (パラメータ名 mappings 用)
     maven {
         name = 'ParchmentMC'
