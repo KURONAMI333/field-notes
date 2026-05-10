@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "fieldnotes",
+  "version": "${version}",
+  "name": "Field Notes",
+  "description": "Auto-record your achievements with timestamp, location, and context - your own field journal. (Fabric 1.20.1).",
+  "authors": ["KURONAMI"],
+  "contact": {
+    "homepage": "https://github.com/KURONAMI333/field-notes",
+    "issues":   "https://github.com/KURONAMI333/field-notes/issues",
+    "sources":  "https://github.com/KURONAMI333/field-notes"
+  },
+  "license": "MIT",
+
+  "environment": "*",
+
+  "entrypoints": {
+    "main": ["com.kuronami.fieldnotes.FieldnotesFabric"]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.15",
+    "fabric-api":   "*",
+    "minecraft":    "~1.20.1",
+    "java":         ">=17"
+  }
+}

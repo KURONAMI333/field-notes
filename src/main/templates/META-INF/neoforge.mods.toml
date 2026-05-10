@@ -1,0 +1,33 @@
+# Field Notes - neoforge.mods.toml
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="KURONAMI"
+displayURL="https://github.com/KURONAMI333/field-notes"
+issueTrackerURL="https://github.com/KURONAMI333/field-notes/issues"
+description='''
+Field Notes — Auto-record your achievements with timestamp, location, and context. Your own field journal that builds itself as you play.
+'''
+
+# ─────────────────────────────────────────────────
+# 必須依存
+# ─────────────────────────────────────────────────
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"

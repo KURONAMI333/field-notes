@@ -1,0 +1,15 @@
+# Field Notes - Forge mods.toml (1.20.1)
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="fieldnotes"
+version="${file.jarVersion}"
+displayName="Field Notes"
+authors="KURONAMI"
+displayURL="https://github.com/KURONAMI333/field-notes"
+issueTrackerURL="https://github.com/KURONAMI333/field-notes/issues"
+description='''
+Auto-record your achievements with timestamp, location, and context - your own field journal.
+'''
