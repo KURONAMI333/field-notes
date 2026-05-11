@@ -15,14 +15,14 @@ ${mod_description}
 
 [[dependencies.${mod_id}]]
     modId="forge"
-    type="required"
+    mandatory=true
     versionRange="${forge_version_range}"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="minecraft"
-    type="required"
+    mandatory=true
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
@@ -30,7 +30,7 @@ ${mod_description}
 # Patchouli — provides the book_brown.png texture for the chronicle viewer.
 [[dependencies.${mod_id}]]
     modId="patchouli"
-    type="required"
+    mandatory=true
     versionRange="[1.20.1-84,)"
     ordering="NONE"
     side="BOTH"
