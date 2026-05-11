@@ -1,4 +1,9 @@
 {
   "key.categories.fieldnotes": "Field Notes",
-  "key.fieldnotes.open_chronicle": "野帳を開く"
+  "key.fieldnotes.open_chronicle": "野帳を開く",
+  "fieldnotes.screen.title": "Field Notes",
+  "fieldnotes.screen.page": "%s / %s ページ",
+  "fieldnotes.screen.empty": "進捗を達成すると記録が始まります",
+  "fieldnotes.screen.search": "検索",
+  "fieldnotes.screen.search.hint": "検索…"
 }

@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "fieldnotes:journal"
+    },
+    "title": {
+      "translate": "advancement.fieldnotes.welcome.title"
+    },
+    "description": {
+      "translate": "advancement.fieldnotes.welcome.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "requirements": [
+    ["tick"]
+  ],
+  "rewards": {
+    "loot": ["fieldnotes:welcome"]
+  }
+}

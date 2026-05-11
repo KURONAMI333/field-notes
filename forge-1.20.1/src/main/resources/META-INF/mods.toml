@@ -26,3 +26,11 @@ ${mod_description}
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+# Patchouli — provides the book_brown.png texture for the chronicle viewer.
+[[dependencies.${mod_id}]]
+    modId="patchouli"
+    type="required"
+    versionRange="[1.20.1-84,)"
+    ordering="NONE"
+    side="BOTH"

@@ -7,6 +7,7 @@ import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.biome.Biome;
@@ -50,6 +51,14 @@ public final class AdvancementListener {
             FieldNotes.LOGGER.debug("Biome resolution skipped at {}: {}", pos, ex.toString());
         }
 
+        // Resolve the icon item's registry id so we can render it later without
+        // serializing the whole ItemStack (icons rarely carry NBT for advancements).
+        String iconItemId = "";
+        try {
+            ResourceLocation itemKey = BuiltInRegistries.ITEM.getKey(display.getIcon().getItem());
+            if (itemKey != null) iconItemId = itemKey.toString();
+        } catch (Exception ignored) { /* item lookup is best-effort */ }
+
         ChronicleEntry entry = new ChronicleEntry(
                 System.currentTimeMillis(),
                 player.level().getDayTime() / 24000L,
@@ -59,11 +68,14 @@ public final class AdvancementListener {
                 pos.getY(),
                 pos.getZ(),
                 advId.toString(),
+                iconItemId,
                 display.getTitle().getString(),
                 display.getDescription().getString(),
                 display.getType().getSerializedName()
         );
 
+        FieldNotes.LOGGER.info("Chronicle entry recorded: {} ({}) at {}",
+                display.getTitle().getString(), advId, pos);
         ChronicleStorage.append(player, entry);
     }
 }

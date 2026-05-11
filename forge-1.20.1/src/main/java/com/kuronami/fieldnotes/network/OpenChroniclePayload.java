@@ -17,6 +17,7 @@ public record OpenChroniclePayload(List<ChronicleEntry> entries) {
             buf.writeUtf(e.biomeId());
             buf.writeInt(e.x()); buf.writeInt(e.y()); buf.writeInt(e.z());
             buf.writeUtf(e.advancementId());
+            buf.writeUtf(e.iconItemId());
             buf.writeUtf(e.title());
             buf.writeUtf(e.description());
             buf.writeUtf(e.frameType());
@@ -31,7 +32,8 @@ public record OpenChroniclePayload(List<ChronicleEntry> entries) {
                     buf.readLong(), buf.readLong(),
                     buf.readUtf(), buf.readUtf(),
                     buf.readInt(), buf.readInt(), buf.readInt(),
-                    buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readUtf()));
+                    buf.readUtf(), buf.readUtf(),
+                    buf.readUtf(), buf.readUtf(), buf.readUtf()));
         }
         return new OpenChroniclePayload(list);
     }

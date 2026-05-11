@@ -1,6 +1,7 @@
 package com.kuronami.fieldnotes;
 
 import com.kuronami.fieldnotes.data.ChronicleStorage;
+import com.kuronami.fieldnotes.item.FieldNotesItems;
 import com.kuronami.fieldnotes.network.FieldNotesNetwork;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -15,6 +16,8 @@ public final class FieldNotesFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        FieldNotesItems.init();
+
         ServerPlayNetworking.registerGlobalReceiver(
                 FieldNotesNetwork.REQUEST_ID,
                 (server, player, handler, buf, sender) -> {

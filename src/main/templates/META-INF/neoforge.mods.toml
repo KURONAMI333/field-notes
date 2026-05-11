@@ -31,3 +31,13 @@ Field Notes — Auto-record your achievements with timestamp, location, and cont
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+# Patchouli — Field Notes uses Patchouli's book_brown.png as its spread-page
+# background texture. The chronicle viewer UI itself is Field Notes' own
+# implementation; we just depend on Patchouli for the artwork.
+[[dependencies.${mod_id}]]
+    modId="patchouli"
+    type="required"
+    versionRange="[1.21.1-93,)"
+    ordering="NONE"
+    side="BOTH"

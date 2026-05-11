@@ -1,5 +1,6 @@
 package com.kuronami.fieldnotes;
 
+import com.kuronami.fieldnotes.item.FieldNotesItems;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -26,8 +27,8 @@ public final class FieldNotes {
         // mod lifecycle bus: register data attachments / capabilities here
         modEventBus.addListener(FieldNotes::onCommonSetup);
 
-        // game event bus: register advancement listener here (Phase 1.5)
-        // NeoForge.EVENT_BUS.register(AdvancementListener.class);
+        // item registry — Journal aka the right-click-to-open book
+        FieldNotesItems.register(modEventBus);
 
         LOGGER.info("Field Notes loaded — listening for adventures.");
     }

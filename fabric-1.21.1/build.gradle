@@ -10,14 +10,23 @@ base {
     archivesName = mod_id
 }
 
-// Field Notes は vanilla Advancement system のみが host。外部 MOD 依存なし。
-// Fabric では advancement granted の first-class event API が無いため、
-// Mixin で PlayerAdvancements.award を hook する。
+repositories {
+    // BlameJared hosts Patchouli's NeoForge / Forge / Fabric maven artifacts.
+    maven {
+        url = "https://maven.blamejared.com"
+        content { includeGroup "vazkii.patchouli" }
+    }
+}
+
+// Field Notes uses Fabric Mixin to hook PlayerAdvancements.award (no first-class
+// advancement event in Fabric). Patchouli provides the book_brown.png texture
+// the chronicle viewer renders against.
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    modImplementation "vazkii.patchouli:Patchouli:1.21.1-92-FABRIC"
 }
 
 processResources {

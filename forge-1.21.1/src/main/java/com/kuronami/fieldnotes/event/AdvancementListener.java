@@ -47,6 +47,8 @@ public final class AdvancementListener {
                 display.getType().getSerializedName()
         );
 
+        FieldNotes.LOGGER.info("Chronicle entry recorded: {} ({}) at {}",
+                display.getTitle().getString(), holder.id(), pos);
         ChronicleStorage.append(player, entry);
     }
 }

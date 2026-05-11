@@ -1,8 +1,9 @@
 package com.kuronami.fieldnotes;
 
+import com.kuronami.fieldnotes.data.ChronicleStorage;
+import com.kuronami.fieldnotes.item.FieldNotesItems;
 import com.kuronami.fieldnotes.network.OpenChroniclePayload;
 import com.kuronami.fieldnotes.network.RequestChroniclePayload;
-import com.kuronami.fieldnotes.data.ChronicleStorage;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -19,6 +20,9 @@ public final class FieldNotesFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        // Force item-registration class load + Creative tab hookup
+        FieldNotesItems.init();
+
         // Register payloads (both directions)
         PayloadTypeRegistry.playC2S().register(RequestChroniclePayload.TYPE, RequestChroniclePayload.STREAM_CODEC);
         PayloadTypeRegistry.playS2C().register(OpenChroniclePayload.TYPE, OpenChroniclePayload.STREAM_CODEC);

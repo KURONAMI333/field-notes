@@ -19,6 +19,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
  * @param y              player y
  * @param z              player z
  * @param advancementId  e.g. {@code "minecraft:adventure/kill_a_mob"}
+ * @param iconItemId     e.g. {@code "minecraft:diamond_pickaxe"} — registry id of the
+ *                       advancement's display icon. Stored as a string (not the live
+ *                       ItemStack) so the entry stays portable across worlds that
+ *                       don't have the source advancement registered.
  * @param title          the advancement's display title (translated at capture time)
  * @param description    the advancement's display description
  * @param frameType      "task" / "goal" / "challenge" — determines tier-of-importance
@@ -32,6 +36,7 @@ public record ChronicleEntry(
         int y,
         int z,
         String advancementId,
+        String iconItemId,
         String title,
         String description,
         String frameType
@@ -39,6 +44,7 @@ public record ChronicleEntry(
 
     /**
      * Codec for NBT / JSON persistence. Field order matches the record's component order.
+     * {@code iconItemId} is optional for back-compat with v0.1.0 entries that pre-date it.
      */
     public static final Codec<ChronicleEntry> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.LONG.fieldOf("epochMillis").forGetter(ChronicleEntry::epochMillis),
@@ -49,6 +55,7 @@ public record ChronicleEntry(
             Codec.INT.fieldOf("y").forGetter(ChronicleEntry::y),
             Codec.INT.fieldOf("z").forGetter(ChronicleEntry::z),
             Codec.STRING.fieldOf("advancementId").forGetter(ChronicleEntry::advancementId),
+            Codec.STRING.optionalFieldOf("iconItemId", "").forGetter(ChronicleEntry::iconItemId),
             Codec.STRING.fieldOf("title").forGetter(ChronicleEntry::title),
             Codec.STRING.fieldOf("description").forGetter(ChronicleEntry::description),
             Codec.STRING.fieldOf("frameType").forGetter(ChronicleEntry::frameType)

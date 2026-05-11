@@ -1,4 +1,12 @@
 {
+  "item.fieldnotes.journal": "Field Notes",
   "key.categories.fieldnotes": "Field Notes",
-  "key.fieldnotes.open_chronicle": "Open Chronicle"
+  "key.fieldnotes.open_chronicle": "Open Chronicle",
+  "fieldnotes.screen.title": "Field Notes",
+  "fieldnotes.screen.page": "Page %s / %s",
+  "fieldnotes.screen.empty": "Earn an advancement to begin chronicling",
+  "fieldnotes.screen.search": "search",
+  "fieldnotes.screen.search.hint": "Search…",
+  "advancement.fieldnotes.welcome.title": "Welcome to Field Notes",
+  "advancement.fieldnotes.welcome.description": "Your chronicle begins here."
 }

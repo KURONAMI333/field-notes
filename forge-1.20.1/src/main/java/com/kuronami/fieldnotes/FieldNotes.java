@@ -26,6 +26,9 @@ public class FieldNotes {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
 
+        // Item registry hookup (DeferredRegister + Creative tab event)
+        com.kuronami.fieldnotes.item.FieldNotesItems.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(com.kuronami.fieldnotes.event.AdvancementListener.class);
 
         LOGGER.info("Field Notes (Forge 1.20.1) loaded.");

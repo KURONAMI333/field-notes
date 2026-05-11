@@ -66,8 +66,19 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
-// Field Notes は vanilla Advancement system のみが host。外部 MOD 依存なし。
+repositories {
+    // BlameJared hosts Patchouli's NeoForge / Forge / Fabric maven artifacts.
+    maven {
+        url = "https://maven.blamejared.com"
+        content { includeGroup "vazkii.patchouli" }
+    }
+}
+
+// Patchouli provides the open-book texture (book_brown.png) the chronicle
+// viewer renders against. The book UI itself is still Field Notes' own
+// implementation — we only depend on Patchouli for its asset shipping.
 dependencies {
+    implementation "vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

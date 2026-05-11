@@ -8,6 +8,8 @@ import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.PlayerAdvancements;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.biome.Biome;
@@ -47,6 +49,12 @@ public abstract class PlayerAdvancementsMixin {
             FieldNotes.LOGGER.debug("Biome resolution skipped: {}", ex.toString());
         }
 
+        String iconItemId = "";
+        try {
+            ResourceLocation itemKey = BuiltInRegistries.ITEM.getKey(display.getIcon().getItem());
+            if (itemKey != null) iconItemId = itemKey.toString();
+        } catch (Exception ignored) { /* best-effort */ }
+
         ChronicleEntry entry = new ChronicleEntry(
                 System.currentTimeMillis(),
                 sp.level().getDayTime() / 24000L,
@@ -54,11 +62,14 @@ public abstract class PlayerAdvancementsMixin {
                 biomeId,
                 pos.getX(), pos.getY(), pos.getZ(),
                 advancement.getId().toString(),
+                iconItemId,
                 display.getTitle().getString(),
                 display.getDescription().getString(),
                 display.getFrame().getName()
         );
 
+        FieldNotes.LOGGER.info("Chronicle entry recorded: {} ({}) at {}",
+                display.getTitle().getString(), advancement.getId(), pos);
         ChronicleStorage.append(sp, entry);
     }
 }

@@ -19,7 +19,7 @@ public final class FieldNotesClient implements ClientModInitializer {
     public static final KeyMapping OPEN_CHRONICLE = new KeyMapping(
             "key.fieldnotes.open_chronicle",
             InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_J,
+            GLFW.GLFW_KEY_K,  // avoid JourneyMap collision
             "key.categories.fieldnotes");
 
     @Override

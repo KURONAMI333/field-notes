@@ -7,6 +7,8 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.entity.player.AdvancementEvent;
@@ -44,6 +46,12 @@ public final class AdvancementListener {
             FieldNotes.LOGGER.debug("Biome resolution skipped at {}: {}", pos, ex.toString());
         }
 
+        String iconItemId = "";
+        try {
+            ResourceLocation itemKey = BuiltInRegistries.ITEM.getKey(display.getIcon().getItem());
+            if (itemKey != null) iconItemId = itemKey.toString();
+        } catch (Exception ignored) { /* best-effort */ }
+
         ChronicleEntry entry = new ChronicleEntry(
                 System.currentTimeMillis(),
                 player.level().getDayTime() / 24000L,
@@ -51,11 +59,14 @@ public final class AdvancementListener {
                 biomeId,
                 pos.getX(), pos.getY(), pos.getZ(),
                 adv.getId().toString(),
+                iconItemId,
                 display.getTitle().getString(),
                 display.getDescription().getString(),
                 display.getFrame().getName()
         );
 
+        FieldNotes.LOGGER.info("Chronicle entry recorded: {} ({}) at {}",
+                display.getTitle().getString(), adv.getId(), pos);
         ChronicleStorage.append(player, entry);
     }
 }
