@@ -14,6 +14,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.AdvancementEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 
 /**
  * Listens for the moment a player earns an advancement and records a
@@ -77,5 +78,16 @@ public final class AdvancementListener {
         FieldNotes.LOGGER.info("Chronicle entry recorded: {} ({}) at {}",
                 display.getTitle().getString(), advId, pos);
         ChronicleStorage.append(player, entry);
+    }
+
+    /**
+     * Drop the in-memory cache when the integrated server stops. Without this
+     * the cache (keyed by player UUID) bleeds entries from the previous world
+     * into the next, so leaving a world and opening another shows the wrong
+     * chronicle until the player relogs.
+     */
+    @SubscribeEvent
+    public static void onServerStopped(ServerStoppedEvent event) {
+        ChronicleStorage.clearCache();
     }
 }

@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.entity.player.AdvancementEvent;
+import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 /**
@@ -68,5 +69,14 @@ public final class AdvancementListener {
         FieldNotes.LOGGER.info("Chronicle entry recorded: {} ({}) at {}",
                 display.getTitle().getString(), adv.getId(), pos);
         ChronicleStorage.append(player, entry);
+    }
+
+    /**
+     * Drop the in-memory cache on integrated-server stop so leaving a world
+     * and entering another doesn't show stale entries from the previous one.
+     */
+    @SubscribeEvent
+    public static void onServerStopped(ServerStoppedEvent event) {
+        ChronicleStorage.clearCache();
     }
 }
