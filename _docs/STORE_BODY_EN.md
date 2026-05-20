@@ -34,7 +34,7 @@ Field Notes is **observation only**. It does not change advancement requirements
 
 Works with **any mod that uses the vanilla advancement system** (Twilight Forest, Botania, Apotheosis, Cobblemon, ...) — no per-mod integration needed.
 
-## Supported Loaders / Versions (v0.2.2)
+## Supported Loaders / Versions
 
 | Minecraft | NeoForge | Forge | Fabric |
 |---|:---:|:---:|:---:|
