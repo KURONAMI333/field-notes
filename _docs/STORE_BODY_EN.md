@@ -1,67 +1,20 @@
 # Field Notes
 
-> Auto-record your achievements with timestamp, location, and context — your own field journal that builds itself as you play.
+A field journal that builds itself as you play: every advancement you earn is recorded with the time, place, and context, then browsable in a spread-page book.
 
-## What it does
+Long playthroughs blur together — you remember beating the Ender Dragon, but not that you did it on world day 47, in a swamp, in the rain. Field Notes keeps those details. Every advancement (vanilla or modded) is captured with a real-time and in-world-day timestamp, coordinates, dimension and biome, and the advancement's icon, title, description, and frame type (task / goal / challenge).
 
-Every time you earn an advancement (vanilla or modded), Field Notes captures the moment in a personal chronicle:
+Open the journal by pressing **K** (rebindable — it defaults to K to avoid JourneyMap's J) or right-clicking the **Field Notes** item. The viewer is a spread-page book styled after Patchouli: four entries per spread, vanilla page-turn arrows, keyword search, and filter by frame type. Biome and dimension names localize to your client language.
 
-- ⏰ **Timestamp** (real-time + in-world day)
-- 📍 **Coordinates + dimension + biome**
-- 🏆 **Advancement icon, title, description, frame type** (task / goal / challenge)
+You get the journal three ways: it's auto-granted by the "Welcome to Field Notes" advancement the first time you join, it's craftable (shapeless `book + leather` or `book + rabbit_hide`), and it's in the Tools & Utilities creative tab.
 
-Open your chronicle two ways:
-- Press **K** (rebindable; defaults to K to avoid JourneyMap's J binding)
-- Right-click the **Field Notes** journal item
+It's observation only — it never changes advancement requirements, difficulty, or rewards — and works with any mod that uses the vanilla advancement system (Twilight Forest, Botania, Apotheosis, Cobblemon, …) with no per-mod integration.
 
-Browse via a **spread-page book viewer** styled after Patchouli — 4 entries per spread, vanilla page-turn arrows, search by keyword, filter by frame type. Biome and dimension names auto-localize to your client language (e.g. `Day 0 · 砂漠` in Japanese).
+**Dependencies**
 
-## Getting the journal
+- [Patchouli](https://modrinth.com/mod/patchouli) — required; it ships the book texture the viewer renders, the same dependency Botania and Hex Casting use
+- Fabric only: Fabric API
 
-The journal item is the door to your chronicle. You can get it three ways:
+Install on the server and on each client — the server grants and records, the journal viewer is client-side.
 
-1. **Auto-granted on world join** via the "Welcome to Field Notes" advancement — appears in your inventory the first time you spawn
-2. **Craft it**: shapeless recipe `book + leather` *or* `book + rabbit_hide`
-3. **Creative tab**: Tools & Utilities
-
-## Why?
-
-Long playthroughs blur together. You remember "I beat the Ender Dragon" but not "I was in a swamp at world day 47, in the rain, with iron armor and a bow". Field Notes makes those details persistent — your own quiet record of how the journey unfolded.
-
-## Design philosophy
-
-Field Notes is **observation only**. It does not change advancement requirements, difficulty, rewards, or any gameplay mechanic. It surfaces information the game already tracks internally — same philosophy as AppleSkin for hunger.
-
-Works with **any mod that uses the vanilla advancement system** (Twilight Forest, Botania, Apotheosis, Cobblemon, ...) — no per-mod integration needed.
-
-## Supported Loaders / Versions
-
-| Minecraft | NeoForge | Forge | Fabric |
-|---|:---:|:---:|:---:|
-| 1.21.1 | ✅ | — | ✅ |
-| 1.20.1 |  —  | ✅ | ✅ |
-
-> *Forge 1.21.1 build was dropped in v0.2.0 — Patchouli has no Forge 1.21.1 release. The NeoForge 1.21.1 build covers the same Minecraft version (NeoForge is the de-facto loader for 1.21+).*
-
-## Dependencies
-
-- **Patchouli** is required (it ships the book texture this mod renders). Same dependency used by Botania, Hex Casting, and others.
-- Fabric users: also requires Fabric API.
-
-## Installation
-
-1. Install your loader (NeoForge / Forge / Fabric) for your MC version
-2. Install **Patchouli** for your loader/version
-3. **Fabric only**: install Fabric API
-4. Drop `fieldnotes-X.Y.Z-{loader}-{mc}.jar` into `mods/`
-5. Join a world — the Welcome advancement grants you a Journal automatically
-
-## License
-
-MIT — modpack inclusion welcome, no credit required.
-
-## Credits
-
-- Author: KURONAMI
-- Source: [github.com/KURONAMI333/field-notes](https://github.com/KURONAMI333/field-notes)
-- Book texture: [Patchouli](https://github.com/VazkiiMods/Patchouli) by Vazkii
+Free to use in any modpack. Source and issues: https://github.com/KURONAMI333/field-notes
