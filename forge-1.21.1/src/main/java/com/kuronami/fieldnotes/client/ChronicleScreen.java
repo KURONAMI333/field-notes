@@ -148,8 +148,6 @@ public final class ChronicleScreen extends Screen {
 
     @Override
     public void render(GuiGraphics g, int mouseX, int mouseY, float partial) {
-        super.render(g, mouseX, mouseY, partial);
-
         // book background (vanilla texture, 192×192 region from 256×256 sheet)
         g.blit(BOOK_TEX, bookLeft, bookTop, 0, 0, BOOK_WIDTH, BOOK_HEIGHT, 256, 256);
 
@@ -182,19 +180,27 @@ public final class ChronicleScreen extends Screen {
                     bookTop + 80,
                     0xFF8B7355,
                     false);
-            return;
+        } else {
+            int x = bookLeft + TEXT_LEFT_PAD;
+            int y = bookTop + TEXT_TOP_PAD;
+            int startIdx = currentPage * ENTRIES_PER_PAGE;
+            int endIdx = Math.min(startIdx + ENTRIES_PER_PAGE, filtered.size());
+
+            for (int i = startIdx; i < endIdx; i++) {
+                ChronicleEntry e = filtered.get(i);
+                int lineY = y + (i - startIdx) * (LINES_PER_ENTRY * LINE_HEIGHT);
+                renderEntry(g, this.font, e, x, lineY);
+            }
         }
 
-        int x = bookLeft + TEXT_LEFT_PAD;
-        int y = bookTop + TEXT_TOP_PAD;
-        int startIdx = currentPage * ENTRIES_PER_PAGE;
-        int endIdx = Math.min(startIdx + ENTRIES_PER_PAGE, filtered.size());
+        // widgets — search box, filter/prev/next buttons — on top of the book
+        super.render(g, mouseX, mouseY, partial);
+    }
 
-        for (int i = startIdx; i < endIdx; i++) {
-            ChronicleEntry e = filtered.get(i);
-            int lineY = y + (i - startIdx) * (LINES_PER_ENTRY * LINE_HEIGHT);
-            renderEntry(g, this.font, e, x, lineY);
-        }
+    /** Suppress the default pause-screen blur (Patchouli's workaround for the "behind glass" effect). */
+    @Override
+    public void renderBackground(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
+        // intentionally empty
     }
 
     private void renderEntry(GuiGraphics g, Font font, ChronicleEntry e, int x, int y) {
