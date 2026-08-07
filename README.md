@@ -2,7 +2,7 @@
 
 > Auto-record your achievements with timestamp, location, and context - your own field journal.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-lightgrey.svg)](LICENSE)
 [![Modrinth](https://img.shields.io/badge/Modrinth-field-notes-00AF5C)](https://modrinth.com/mod/field-notes)
 [![CurseForge](https://img.shields.io/badge/CurseForge-field-notes-F16436)](https://www.curseforge.com/minecraft/mc-mods/field-notes)
 
@@ -31,7 +31,7 @@
 
 ## License
 
-[MIT License](LICENSE) — modpack inclusion welcome, no credit required.
+[All Rights Reserved](LICENSE) — modpack inclusion welcome, no credit required. Source is published so you can read exactly what it does.
 
 ## Credits
 
